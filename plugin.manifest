@@ -1,0 +1,7 @@
+pluginclassname=Lehrabrechnung
+pluginname=Lehrabrechnung
+origin=data-quest
+version=0.2
+dbscheme=install.sql
+uninstalldbscheme=uninstall.sql
+studipMinVersion=2.0
