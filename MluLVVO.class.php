@@ -30,33 +30,11 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 // +---------------------------------------------------------------------------+
 
-require_once 'lib/classes/SimpleORMap.class.php';
-
-define('MLULVVO_DB_TABLE', 'mlu_lvvo_plugin');
 define('SWS_DATAFIELD_ID', 'b0603040a62adf1ff83d0452743e5d33');
 
 class MluLVVO extends SimpleORMap {
 
-
-    static function find($seminar_id, $user_id)
-    {
-        return SimpleORMap::find(__CLASS__, array($seminar_id, $user_id));
-    }
-
-    static function findBySql($where)
-    {
-        return SimpleORMap::findBySql(__CLASS__, $where);
-    }
-
-    static function findBySeminar($seminar_id)
-    {
-        return self::findBySql("seminar_id=" . DbManager::get()->quote($seminar_id));
-    }
-
-    static function deleteBySql($where)
-    {
-        return SimpleORMap::deleteBySql(__CLASS__, $where);
-    }
+    protected $db_table = "mlu_lvvo_plugin";
 
     static function GetSeminarSWS($seminar_id){
 		$db = DbManager::get();
@@ -79,14 +57,10 @@ class MluLVVO extends SimpleORMap {
 
 	static function GetSeminarLVVO($seminar_id){
 		$ret = array();
-		foreach(self::findBySeminar($seminar_id) as $one) {
+		foreach(self::findByseminar_id($seminar_id) as $one) {
 			$ret[$one->user_id] = $one;
 		}
 		return $ret;
-	}
-
-	function __construct($id = null){
-		parent::__construct($id);
 	}
 }
 ?>

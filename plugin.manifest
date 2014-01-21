@@ -1,7 +1,7 @@
 pluginclassname=Lehrabrechnung
 pluginname=Lehrabrechnung
 origin=data-quest
-version=0.2
+version=0.3
 dbscheme=install.sql
 uninstalldbscheme=uninstall.sql
-studipMinVersion=2.0
+studipMinVersion=2.4
